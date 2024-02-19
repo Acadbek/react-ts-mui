@@ -1,11 +1,11 @@
-import { Suspense } from "react";
-import { Provider } from 'react-redux'
-import { store } from "@/store";
-import { Router } from "@/router";
-import { BrowserRouter } from 'react-router-dom'
+import { Suspense } from 'react';
+import { Provider } from 'react-redux';
+import { store } from '@/store';
+import { Router } from '@/router';
+import { BrowserRouter } from 'react-router-dom';
 
 export const App = () => {
-  console.log(store)
+  console.log(store);
 
   return (
     <BrowserRouter>
@@ -16,4 +16,4 @@ export const App = () => {
       </Provider>
     </BrowserRouter>
   );
-}
+};

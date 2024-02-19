@@ -1,5 +1,5 @@
-import Navbar from "@/components/UI/navbar";
-import { Button } from "@mui/material";
+import Navbar from '@/components/UI/navbar';
+import { Button } from '@mui/material';
 
 const Home = () => {
   return (
@@ -7,8 +7,7 @@ const Home = () => {
       <Navbar />
       <Button variant="contained">Text</Button>
     </>
-  )
-}
-
+  );
+};
 
 export default Home;

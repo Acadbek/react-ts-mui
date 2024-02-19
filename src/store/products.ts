@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  loading: false
+  loading: false,
 };
 
 const productsSlice = createSlice({
@@ -9,10 +9,10 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     setLoading: (state, action) => {
-      state.loading = action.payload
-    }
-  }
-})
+      state.loading = action.payload;
+    },
+  },
+});
 
 const { reducer, actions } = productsSlice;
 export const { setLoading } = actions;

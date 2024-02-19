@@ -1,11 +1,7 @@
-import { lazy } from "react";
+import { lazy } from 'react';
 
-const Home = lazy(() =>
-  import('@/pages').then(({ Home }) => ({ default: Home }))
-)
+const Home = lazy(() => import('@/pages').then(({ Home }) => ({ default: Home })));
 
-const Products = lazy(() =>
-  import('@/pages').then(({ Products }) => ({ default: Products }))
-)
+const Products = lazy(() => import('@/pages').then(({ Products }) => ({ default: Products })));
 
-export { Home, Products }
+export { Home, Products };
