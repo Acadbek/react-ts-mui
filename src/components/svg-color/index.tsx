@@ -2,12 +2,13 @@ import { SvgColorProps } from "@/types";
 import { Box } from "@mui/material";
 import { forwardRef } from "react";
 
-export const SvgColor = forwardRef(({ src, sx, ...other }: SvgColorProps, ref) => (
+export const SvgColor = forwardRef(({ src, sx, className, ...other }: SvgColorProps, ref) => (
   <Box
     component="span"
-    className="svg-color"
+    className={`svg-color`}
     ref={ref}
     sx={{
+      "&:hover": { stroke: 'red', fill: 'red' },
       width: 22,
       height: 22,
       display: 'inline-block',

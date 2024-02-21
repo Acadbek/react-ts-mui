@@ -1,5 +1,6 @@
 import { Layout } from '@/layouts/Layout';
 import { Home, Products } from '@/pages';
+import { NotFound } from '@/pages/not-found';
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -24,6 +25,7 @@ export const Router = () => {
           }
         />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

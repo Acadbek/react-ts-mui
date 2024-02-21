@@ -6,3 +6,7 @@
 body {
   background-color: #f8fafc;
 }
+
+.sidebar::-webkit-scrollbar {
+  width: 0;
+}
