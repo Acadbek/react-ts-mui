@@ -1,0 +1,13 @@
+@layer components {
+  .flex-center {
+    @apply flex items-center justify-center
+  }
+
+  .y-center {
+    @apply flex items-center
+  }
+
+  .line {
+    @apply border-t border-[F1F5F9] mt-7
+  }
+}

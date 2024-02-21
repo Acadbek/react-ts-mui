@@ -1,0 +1,8 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import './components.css';
+@import 'tailwindcss/utilities';
+
+body {
+  background-color: #f8fafc;
+}
