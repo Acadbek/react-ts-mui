@@ -4,8 +4,9 @@ export interface ChildProps {
 
 export interface LinkTypes {
   title: string;
-  path: string;
+  path?: string | any;
   icon?: any;
+  className?: any;
   children?: LinkTypes[]
 }
 
@@ -14,6 +15,7 @@ export interface SidebarProps {
 }
 
 export interface SvgColorProps {
+  className?: any;
   src: string;
   sx: Object
 }
