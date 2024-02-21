@@ -11,7 +11,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 export const App = () => {
   const client = new QueryClient();
-
+               
   return (
     <HelmetProvider>
       <QueryClientProvider client={client}>
