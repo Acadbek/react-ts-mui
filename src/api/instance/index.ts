@@ -2,6 +2,8 @@ import axios, { AxiosInstance, AxiosResponse, AxiosError } from "axios";
 import { endpoints } from "@/api/endpoints";
 import { InstanceType } from "@/types";
 
+const URL = import.meta.env.VITE_BASE_URL;
+
 export class Instance {
   instance: AxiosInstance;
   baseURL: string;
@@ -36,14 +38,53 @@ export class Instance {
     throw error;
   }
 
-  async get(url: string, params?: any) {
+  async get(url?: string | any, params?: any) {
     try {
-      const data = await this.instance.get(url, {
+      const response = await this.instance.get(url, {
         ...params,
-        baseURL: `${import.meta.env.VITE_BASE_URL}${this.baseURL}`,
+        baseURL: `${URL}${this.baseURL}`,
       });
-      return data;
 
+      return response;
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  async post(url?: string | any, params?: any, config?: any) {
+    try {
+      const response = await this.instance.post(url, params, {
+        ...config,
+        baseURL: `${URL}${this.baseURL}`
+      });
+
+      return response;
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  async delete(url?: string | any, config?: any) {
+    try {
+      const response = await this.instance.delete(url, {
+        ...config,
+        baseURL: `${URL}${this.baseURL}`,
+      });
+
+      return response;
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  async put(url?: string | any, params?: any, config?: any) {
+    try {
+      const response = await this.instance.put(url, params, {
+        ...config,
+        baseURL: `${URL}${this.baseURL}`,
+      });
+
+      return response;
     } catch (error) {
       alert(error)
     }

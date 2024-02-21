@@ -15,6 +15,10 @@ class ProductApi extends Instance {
   }
 
   getProducts = () => this.get();
+  
+  createProduct = (params: any) => this.post(params);
+
+  deleteProduct = (params: any) => this.delete(params);
 }
 
 export const productApi = new ProductApi(config);
