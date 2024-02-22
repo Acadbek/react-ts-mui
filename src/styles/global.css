@@ -8,5 +8,31 @@ body {
 }
 
 .sidebar::-webkit-scrollbar {
-  width: 0;
+  width: 5px;
+  position: absolute;
+  margin: 0;
+  visibility: hidden;
+  transition: all .3 ease;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  visibility: hidden;
+  border-radius: 2px;
+  background: #d2dce5;
+  height: 20px;
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar {
+  visibility: visible;
+}
+
+td:first-child,
+th:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+td:last-child,
+th:last-child {
+  border-radius: 0 10px 10px 0;
 }
