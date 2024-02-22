@@ -1,13 +1,11 @@
-import { SidebarProps } from "@/types"
-import logo from '@/assets/icons/logo.svg'
-import { Fragment } from "react"
-import { Link } from "@/components/router-link"
-import navConfig from "./sidebar-config"
+import logo from '@/assets/icons/logo.svg';
+import { Fragment } from 'react';
+import { Link } from '@/components/router-link';
+import navConfig from './sidebar-config';
 
-export const Sidebar = ({ }: SidebarProps) => {
-
+export const Sidebar = () => {
   const renderLinks = (space: string) => {
-    return navConfig?.map(item => {
+    return navConfig?.map((item) => {
       if (item?.space === space) {
         return <Link key={item?.title} path={item?.path} title={item?.title} icon={item?.icon} />;
       }
@@ -38,5 +36,5 @@ export const Sidebar = ({ }: SidebarProps) => {
         {renderLinks('bottom')}
       </aside>
     </Fragment>
-  )
-}
+  );
+};

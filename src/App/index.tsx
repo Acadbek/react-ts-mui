@@ -1,4 +1,4 @@
-import '@/styles/global.css'
+import '@/styles/global.css';
 
 import { Suspense } from 'react';
 import { Provider } from 'react-redux';
@@ -8,10 +8,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
-
 export const App = () => {
   const client = new QueryClient();
-               
+
   return (
     <HelmetProvider>
       <QueryClientProvider client={client}>

@@ -1,5 +1,5 @@
 export interface ChildProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export interface LinkTypes {
@@ -7,17 +7,17 @@ export interface LinkTypes {
   path?: string | any;
   icon?: any;
   className?: any;
-  children?: LinkTypes[]
+  children?: LinkTypes[];
 }
 
 export interface SidebarProps {
-  className?: string
+  className?: string;
 }
 
 export interface SvgColorProps {
   className?: any;
   src: string;
-  sx: Object
+  sx: unknown;
 }
 
 export interface SidebarItemProps {
@@ -25,11 +25,11 @@ export interface SidebarItemProps {
     title: string;
     path: string;
     icon: any;
-  }
+  };
 }
 
 export interface endpointsType {
-  [key: string]: string
+  [key: string]: string;
 }
 
 export interface InstanceType {

@@ -1,8 +1,12 @@
 import { SvgColor } from '@/components/svg-color';
 
 const icon = (name: string) => (
-  <SvgColor className='group-hover:fill-black' src={`src/assets/icons/${name}.svg`} sx={{ "&:hover": { color: 'red' }, width: 1, height: 1 }} />
-)
+  <SvgColor
+    className="group-hover:fill-black"
+    src={`src/assets/icons/${name}.svg`}
+    sx={{ '&:hover': { color: 'red' }, width: 1, height: 1 }}
+  />
+);
 
 const navConfig = [
   {

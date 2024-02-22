@@ -1,8 +1,8 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosError } from "axios";
-import { endpoints } from "@/api/endpoints";
-import { InstanceType } from "@/types";
+import axios, { AxiosInstance, AxiosResponse, AxiosError, AxiosHeaders, AxiosRequestConfig } from 'axios';
+import { endpoints } from '@/api/endpoints';
+import { InstanceType } from '@/types';
 
-const URL = import.meta.env.VITE_BASE_URL;
+const URL: string = import.meta.env.VITE_BASE_URL;
 
 export class Instance {
   instance: AxiosInstance;
@@ -11,12 +11,12 @@ export class Instance {
   constructor({ baseURL = endpoints.base, headers, timeout = 65000 }: InstanceType) {
     this.instance = axios.create({
       baseURL,
-      headers,
+      headers: headers as AxiosHeaders,
       timeout,
     });
     this.instance.interceptors.request.use(
       (config) => this.handleRequest(config),
-      (error) => Promise.reject(this.handleResponseError(error))
+      (error) => Promise.reject(this.handleRequestError(error))
     );
     this.instance.interceptors.response.use(
       (response) => this.handleResponse(response),
@@ -25,68 +25,78 @@ export class Instance {
     this.baseURL = baseURL;
   }
 
-  handleRequest(config: any) {
+  private handleRequest(config: AxiosRequestConfig): AxiosRequestConfig {
     return config;
   }
 
-  handleResponse(response: AxiosResponse) {
+  private handleRequestError(error: AxiosError): Promise<AxiosError> {
+    return Promise.reject(this.handleResponseError(error));
+  }
+
+  private handleResponse(response: AxiosResponse): any {
     return response.data;
   }
 
-  handleResponseError(error: AxiosError) {
-    if (error.response?.status === 401) alert(error);
-    throw error;
+  private handleResponseError(error: AxiosError): Promise<AxiosError> {
+    if (error.response?.status === 401) {
+      alert(error);
+    }
+    return Promise.reject(error);
   }
 
-  async get(url?: string | any, params?: any) {
+  async get<T = any>(url?: string, params?: AxiosRequestConfig['params']): Promise<AxiosResponse<T>> {
     try {
-      const response = await this.instance.get(url, {
+      const response = await this.instance.get<T>(url || '', {
         ...params,
         baseURL: `${URL}${this.baseURL}`,
       });
 
       return response;
     } catch (error) {
-      alert(error)
+      alert(error);
+      throw error;
     }
   }
 
-  async post(url?: string | any, params?: any, config?: any) {
+  async post<T = any>(url?: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     try {
-      const response = await this.instance.post(url, params, {
+      const response = await this.instance.post<T>(url || '', data, {
         ...config,
-        baseURL: `${URL}${this.baseURL}`
+        baseURL: `${URL}${this.baseURL}`,
       });
 
       return response;
     } catch (error) {
       alert(error);
+      throw error;
     }
   }
 
-  async delete(url?: string | any, config?: any) {
+  async delete<T = any>(url?: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     try {
-      const response = await this.instance.delete(url, {
+      const response = await this.instance.delete<T>(url || '', {
         ...config,
         baseURL: `${URL}${this.baseURL}`,
       });
 
       return response;
     } catch (error) {
-      alert(error)
+      alert(error);
+      throw error;
     }
   }
 
-  async put(url?: string | any, params?: any, config?: any) {
+  async put<T = any>(url?: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     try {
-      const response = await this.instance.put(url, params, {
+      const response = await this.instance.put<T>(url || '', data, {
         ...config,
         baseURL: `${URL}${this.baseURL}`,
       });
 
       return response;
     } catch (error) {
-      alert(error)
+      alert(error);
+      throw error;
     }
   }
 }
