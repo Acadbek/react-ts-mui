@@ -13,3 +13,4 @@ export const Link = ({ path, icon, title, className }: LinkTypes) => {
     </NavLink >
   )
 }
+export default Link;

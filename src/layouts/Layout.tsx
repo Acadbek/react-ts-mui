@@ -5,8 +5,8 @@ export const Layout = () => {
   return (
     <div className='flex'>
       <Sidebar />
-      <main className='ml-64 flex-grow flex justify-center items-center'>
-        <div className='container border w-full max-w-[1230px] h-[150vh]'>
+      <main className='ml-[282px] flex-grow flex justify-center items-center'>
+        <div className='container w-full max-w-[1230px]'>
           <Outlet />
         </div>
       </main>

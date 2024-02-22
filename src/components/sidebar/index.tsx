@@ -16,7 +16,7 @@ export const Sidebar = ({ }: SidebarProps) => {
   };
   return (
     <Fragment>
-      <aside className="sidebar bg-white w-[250px] overflow-y-auto px-4 pt-4 border h-screen fixed top-0">
+      <aside className="sidebar z-10 bg-white w-[250px] overflow-y-auto pl-4 pr-3 pt-4 shadow-[10px_10px_50px_0px_#64748B0A] h-screen fixed top-0">
         <img className="ml-4" src={logo} alt="Logo" />
 
         <div className="line"></div>
