@@ -5,17 +5,17 @@ import { selectIsModalOpen } from '@/store/products';
 import { useSelector } from 'react-redux';
 import Checkbox from '@/components/table/checkbox';
 import Modal from '@/components/modal';
+import { DataType } from '@/types';
 
 export const Products = () => {
   const isModalOpen = useSelector(selectIsModalOpen);
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isError } = useQuery({
     queryKey: ['products'],
     queryFn: productApi.getProducts,
     staleTime: Infinity,
   });
 
-  if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching products</div>;
 
   return (
@@ -59,14 +59,12 @@ export const Products = () => {
                 Status
               </th>
               <th scope="col" className="px-6 py-3">
-                <button>
-                  <img src="src/assets/icons/dots.svg" alt="" />
-                </button>
+                Actions
               </th>
             </tr>
           </thead>
           <tbody className="text-base text-[#0F172A] font-semibold leading-6 tracking-[0.20px] text-left">
-            {data?.map((item) => (
+            {data?.map((item: DataType) => (
               <tr key={item?.id} className="bg-white h-16 border-b border-[#F1F5F9]">
                 <td className="w-4 p-4">
                   <Checkbox />
@@ -93,9 +91,8 @@ export const Products = () => {
                   </label>
                 </td>
                 <td className="px-6 py-4">
-                  <a href="#" className="font-medium text-blue-600 hover:underline">
-                    <img src="/src/assets/icons/dots.svg" alt="" />
-                  </a>
+                  <button type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4font-medium rounded-md text-sm px-3 py-1 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700">Red</button>
+                  <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md text-sm px-3 py-1 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700">Edit</button>
                 </td>
               </tr>
             ))}

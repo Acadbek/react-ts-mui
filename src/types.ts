@@ -56,11 +56,23 @@ export interface DataType {
   guid: string;
   id: number;
   title: string;
+  productImages: string[]
+  brand: {
+    guid: string;
+    id: number;
+    title: string;
+  }
+  stock: string
+  sales: string
+  productPricings: {
+    price: string;
+  }
+  status: boolean
 }
 
 export interface StepProps {
-  next: () => void;
-  prev: () => void;
+  next?: () => void;
+  prev?: () => void;
   keyboardLang?: DataType[];
   memory?: DataType[];
   storages?: DataType[];

@@ -3,14 +3,21 @@ import { closeModal } from '@/store/products';
 import { useDispatch } from 'react-redux';
 import { productApi } from '@/api/products';
 import { useQuery } from '@tanstack/react-query';
+import { useEffect, useRef, useState } from 'react';
 import Step3 from './Step3';
 import Step2 from './Step2';
 
 const Modal = () => {
   const dispatch = useDispatch();
   const totalSteps: number = 3;
-
+  const modalRef = useRef<HTMLDivElement>(null);
   const { currentStep, next, prev } = useSteps(totalSteps);
+
+  useEffect(() => {
+    if (modalRef.current) {
+      modalRef.current.scrollTop = 0;
+    }
+  }, [currentStep]);
 
   const { data: brands } = useQuery({
     queryKey: ['brand'],
@@ -147,7 +154,7 @@ const Modal = () => {
                     className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   >
                     {brands?.map(({ id, title }: Types) => (
-                      <option key={id} value="apple">
+                      <option key={id} value={id.toString()}>
                         {title}
                       </option>
                     ))}
@@ -198,7 +205,7 @@ const Modal = () => {
             warrantyType={warrantyType}
           />
         )}
-        {currentStep === 3 && <Step3 prev={prev} next={next} taxRule={taxRule} minOrder={minOrder} />}
+        {currentStep === 3 && <Step3 prev={prev} taxRule={taxRule} minOrder={minOrder} />}
       </div>
     </div>
   );

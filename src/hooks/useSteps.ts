@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
 interface StepTypes {
-  currentStep: number;
   next: () => void;
   prev: () => void;
-  goToStep: (stepNumber: number) => void;
-  isFirstStep: boolean;
-  isLastStep: boolean;
+  currentStep?: number;
+  isLastStep?: boolean;
+  isFirstStep?: boolean;
+  goToStep?: (stepNumber: number) => void;
 }
 
 const useSteps = (totalSteps: number): StepTypes => {
@@ -30,10 +30,10 @@ const useSteps = (totalSteps: number): StepTypes => {
   return {
     next,
     prev,
-    currentStep,
     goToStep,
-    isFirstStep,
     isLastStep,
+    currentStep,
+    isFirstStep,
   };
 };
 

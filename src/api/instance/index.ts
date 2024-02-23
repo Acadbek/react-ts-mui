@@ -1,6 +1,6 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosError, AxiosHeaders, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig, AxiosError, AxiosHeaders, AxiosRequestConfig } from 'axios';
 import { endpoints } from '@/api/endpoints';
-import { InstanceType } from '@/types';
+import { DataType, InstanceType } from '@/types';
 
 const URL: string = import.meta.env.VITE_BASE_URL;
 
@@ -15,17 +15,17 @@ export class Instance {
       timeout,
     });
     this.instance.interceptors.request.use(
-      (config) => this.handleRequest(config),
+      (config: InternalAxiosRequestConfig) => this.handleRequest(config),
       (error) => Promise.reject(this.handleRequestError(error))
     );
     this.instance.interceptors.response.use(
-      (response) => this.handleResponse(response),
+      (response: AxiosResponse) => this.handleResponse(response),
       (error) => Promise.reject(this.handleResponseError(error))
     );
     this.baseURL = baseURL;
   }
 
-  private handleRequest(config: AxiosRequestConfig): AxiosRequestConfig {
+  private handleRequest(config: InternalAxiosRequestConfig): InternalAxiosRequestConfig {
     return config;
   }
 
@@ -33,18 +33,18 @@ export class Instance {
     return Promise.reject(this.handleResponseError(error));
   }
 
-  private handleResponse(response: AxiosResponse): any {
+  private handleResponse(response: AxiosResponse) {
     return response.data;
   }
 
   private handleResponseError(error: AxiosError): Promise<AxiosError> {
     if (error.response?.status === 401) {
-      alert(error);
+      alert((error as Error).message);
     }
     return Promise.reject(error);
   }
 
-  async get<T = any>(url?: string, params?: AxiosRequestConfig['params']): Promise<T> {
+  async get<T>(url?: string, params?: AxiosRequestConfig['params']): Promise<AxiosResponse<T>> {
     try {
       const response = await this.instance.get<T>(url || '', {
         ...params,
@@ -52,13 +52,13 @@ export class Instance {
       });
 
       return response;
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error) {
+      alert((error as Error).message);
       throw error;
     }
   }
 
-  async post<T = any>(url?: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  async post<T>(url?: string, data?: DataType, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     try {
       const response = await this.instance.post<T>(url || '', data, {
         ...config,
@@ -67,12 +67,12 @@ export class Instance {
 
       return response;
     } catch (error) {
-      alert(error);
+      alert((error as Error).message);
       throw error;
     }
   }
 
-  async delete<T = any>(url?: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  async delete<T>(url?: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     try {
       const response = await this.instance.delete<T>(url || '', {
         ...config,
@@ -81,12 +81,12 @@ export class Instance {
 
       return response;
     } catch (error) {
-      alert(error);
+      alert((error as Error).message);
       throw error;
     }
   }
 
-  async put<T = any>(url?: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  async put<T>(url?: string, data?: DataType, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     try {
       const response = await this.instance.put<T>(url || '', data, {
         ...config,
@@ -95,7 +95,7 @@ export class Instance {
 
       return response;
     } catch (error) {
-      alert(error);
+      alert((error as Error).message);
       throw error;
     }
   }
