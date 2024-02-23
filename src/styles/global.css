@@ -7,6 +7,7 @@ body {
   background-color: #f8fafc;
 }
 
+.modal::-webkit-scrollbar,
 .sidebar::-webkit-scrollbar {
   width: 5px;
   position: absolute;
@@ -15,7 +16,8 @@ body {
   transition: all .3 ease;
 }
 
-.sidebar::-webkit-scrollbar-thumb {
+.sidebar::-webkit-scrollbar-thumb,
+.modal::-webkit-scrollbar-thumb {
   visibility: hidden;
   border-radius: 2px;
   background: #d2dce5;
@@ -24,6 +26,11 @@ body {
 
 .sidebar:hover::-webkit-scrollbar-thumb,
 .sidebar::-webkit-scrollbar {
+  visibility: visible;
+}
+
+.modal:hover::-webkit-scrollbar-thumb,
+.modal::-webkit-scrollbar {
   visibility: visible;
 }
 
