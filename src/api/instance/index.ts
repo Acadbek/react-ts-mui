@@ -52,8 +52,8 @@ export class Instance {
       });
 
       return response;
-    } catch (error) {
-      alert(error);
+    } catch (error: any) {
+      alert(error.message);
       throw error;
     }
   }

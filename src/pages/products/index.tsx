@@ -1,16 +1,31 @@
 import { Helmet } from 'react-helmet-async';
 import { useQuery } from '@tanstack/react-query';
 import { productApi } from '@/api/products';
+import { selectIsModalOpen } from '@/store/products';
+import { useSelector } from 'react-redux';
 import Checkbox from '@/components/table/checkbox';
+import Modal from '@/components/modal';
 
 export const Products = () => {
+  const isModalOpen = useSelector(selectIsModalOpen);
+
   const { data, isLoading, isError } = useQuery({
     queryKey: ['products'],
     queryFn: productApi.getProducts,
     staleTime: Infinity,
   });
 
-  console.log(data);
+  const { data: brands, isError: errorBrand } = useQuery({
+    queryKey: ['brand'],
+    queryFn: productApi.getProductBrand,
+    staleTime: Infinity,
+  })
+
+  const { data: category, isError: errorCategory } = useQuery({
+    queryKey: ['category'],
+    queryFn: productApi.getProductCategory,
+    staleTime: Infinity,
+  })
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching products</div>;
@@ -18,8 +33,9 @@ export const Products = () => {
   return (
     <>
       <Helmet>
-        <title>Projects</title>
+        <title>Products</title>
       </Helmet>
+      {isModalOpen && <Modal brands={brands} category={category} errorBrand={errorBrand} />}
       <div className="relative mt-8 p-6 overflow-x-auto shadow-[10px_10px_50px_0px_#64748B0A] sm:rounded-lg bg-white">
         <table className="w-full border-spacing-6 text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400">
           <thead className="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

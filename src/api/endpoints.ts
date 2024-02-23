@@ -1,7 +1,8 @@
 import { endpointsType } from '@/types';
 
 export const endpoints: endpointsType = {
+  base: '',
   products: '/product-list',
-  category: '/product-cetegory',
+  category: '/product-category',
   brand: '/product-brand',
 };

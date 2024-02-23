@@ -37,3 +37,35 @@ export interface InstanceType {
   headers?: Record<string, any>;
   timeout?: number;
 }
+
+export interface ModalTypes {
+  brands: {
+    guid: string;
+    id: number;
+    title: string;
+  },
+  category: {
+    guid: string;
+    id: number;
+    title: string;
+  },
+  errorBrand: any
+}
+
+export interface ProductBrand {
+  brands: {
+    guid: string;
+    id: number;
+    title: string;
+  }
+}
+
+export interface ProductCategory {
+  category: {
+    guid: string;
+    id: number;
+    title: string;
+  }
+}
+
+

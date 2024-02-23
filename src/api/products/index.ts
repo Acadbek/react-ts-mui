@@ -6,7 +6,7 @@ interface ProductConfig {
 }
 
 const config: ProductConfig = {
-  baseURL: endpoints.products,
+  baseURL: endpoints.base,
 };
 
 class ProductApi extends Instance {
@@ -14,7 +14,11 @@ class ProductApi extends Instance {
     super(config);
   }
 
-  getProducts = () => this.get();
+  getProducts = () => this.get(endpoints.products);
+
+  getProductBrand = () => this.get(endpoints.brand);
+
+  getProductCategory = () => this.get(endpoints.category)
 
   createProduct = (params: any) => this.post(params);
 
