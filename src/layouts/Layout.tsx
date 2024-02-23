@@ -29,15 +29,15 @@ export const Layout = () => {
         </div>
         <div className='flex y-center x-between gap-4 mt-[30px]'>
           <div className='flex y-center gap-4'>
-            <select id="countries" className="w-[168px] bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-              <option selected>Choose a country</option>
+            <select id="countries" className="w-[168px] text-[#64748B] font-medium leading-[22px] tracking-[0.20] bg-white border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+              <option selected>Best sellers</option>
               <option value="US">United States</option>
               <option value="CA">Canada</option>
               <option value="FR">France</option>
               <option value="DE">Germany</option>
             </select>
-            <select id="countries" className="w-[168px] bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-              <option selected>Choose a country</option>
+            <select id="countries" className="w-[168px] text-[#64748B] font-medium leading-[22px] tracking-[0.20] bg-white border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+              <option selected>All Categories</option>
               <option value="US">United States</option>
               <option value="CA">Canada</option>
               <option value="FR">France</option>
