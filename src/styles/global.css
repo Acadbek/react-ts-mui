@@ -4,7 +4,7 @@
 @import 'tailwindcss/utilities';
 
 body {
-  background-color: #f8fafc;
+  background-color: #edf2f7;
 }
 
 .modal::-webkit-scrollbar,

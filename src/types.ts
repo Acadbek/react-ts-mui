@@ -10,6 +10,12 @@ export interface LinkTypes {
   children?: LinkTypes[];
 }
 
+export interface Types {
+  map: any;
+  id: number;
+  title: string;
+}
+
 export interface SidebarProps {
   className?: string;
 }

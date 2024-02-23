@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useEffect, useRef } from 'react';
 import Step3 from './Step3';
 import Step2 from './Step2';
+import { Types } from '@/types';
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -73,10 +74,7 @@ const Modal = () => {
     staleTime: Infinity,
   });
 
-  interface Types {
-    id: number;
-    title: string;
-  }
+
 
   return (
     <div className="transition-all">
@@ -153,7 +151,7 @@ const Modal = () => {
                     id="countries"
                     className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   >
-                    {brands?.map(({ id, title }: Types) => (
+                    {brands && brands?.map(({ id, title }: Types) => (
                       <option key={id} value={id.toString()}>
                         {title}
                       </option>
