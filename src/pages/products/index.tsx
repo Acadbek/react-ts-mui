@@ -15,18 +15,6 @@ export const Products = () => {
     staleTime: Infinity,
   });
 
-  const { data: brands, isError: errorBrand } = useQuery({
-    queryKey: ['brand'],
-    queryFn: productApi.getProductBrand,
-    staleTime: Infinity,
-  })
-
-  const { data: category, isError: errorCategory } = useQuery({
-    queryKey: ['category'],
-    queryFn: productApi.getProductCategory,
-    staleTime: Infinity,
-  })
-
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching products</div>;
 
@@ -35,7 +23,7 @@ export const Products = () => {
       <Helmet>
         <title>Products</title>
       </Helmet>
-      {isModalOpen && <Modal brands={brands} category={category} errorBrand={errorBrand} />}
+      {isModalOpen && <Modal />}
       <div className="relative mt-8 p-6 overflow-x-auto shadow-[10px_10px_50px_0px_#64748B0A] sm:rounded-lg bg-white">
         <table className="w-full border-spacing-6 text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400">
           <thead className="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

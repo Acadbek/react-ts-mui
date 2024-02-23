@@ -1,8 +1,8 @@
-import { closeModal } from "@/store/products"
-import { useDispatch } from "react-redux"
+import { closeModal } from '@/store/products';
+import { useDispatch } from 'react-redux';
 
 const Information = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <>
       <div className="flex px-4 pt-4 pb-3 y-center x-between border-b">
@@ -76,7 +76,9 @@ const Information = () => {
             >
               {errorBrand && <span>{errorBrand}</span>}
               {brands?.map(({ id, title }) => (
-                <option key={id} value="apple">{title}</option>
+                <option key={id} value="apple">
+                  {title}
+                </option>
               ))}
             </select>
             <button
@@ -97,7 +99,9 @@ const Information = () => {
               className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             >
               {category.map(({ title, id }) => (
-                <option key={id} value="US">{title}</option>
+                <option key={id} value="US">
+                  {title}
+                </option>
               ))}
             </select>
             <button
@@ -110,5 +114,5 @@ const Information = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};

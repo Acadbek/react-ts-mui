@@ -18,7 +18,21 @@ class ProductApi extends Instance {
 
   getProductBrand = () => this.get(endpoints.brand);
 
-  getProductCategory = () => this.get(endpoints.category)
+  getProductCategory = () => this.get(endpoints.category);
+
+  getKeyboardLanguage = () => this.get(endpoints.keyboardLanguage);
+
+  getMemory = () => this.get(endpoints.memory);
+
+  getStorage = () => this.get(endpoints.storage);
+
+  getWarranty = () => this.get(endpoints.warranty);
+
+  getTaxRule = () => this.get(endpoints.taxRule);
+
+  getMinOrder = () => this.get(endpoints.minOrder);
+
+  getWarrantyType = () => this.get(endpoints.warrantyType);
 
   createProduct = (params: any) => this.post(params);
 

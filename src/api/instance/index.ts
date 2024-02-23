@@ -44,7 +44,7 @@ export class Instance {
     return Promise.reject(error);
   }
 
-  async get<T = any>(url?: string, params?: AxiosRequestConfig['params']): Promise<AxiosResponse<T>> {
+  async get<T = any>(url?: string, params?: AxiosRequestConfig['params']): Promise<T> {
     try {
       const response = await this.instance.get<T>(url || '', {
         ...params,

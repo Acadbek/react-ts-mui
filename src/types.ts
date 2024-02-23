@@ -39,17 +39,35 @@ export interface InstanceType {
 }
 
 export interface ModalTypes {
-  brands: {
+  brands?: {
     guid: string;
     id: number;
     title: string;
-  },
-  category: {
+  };
+  category?: {
     guid: string;
     id: number;
     title: string;
-  },
-  errorBrand: any
+  };
+  errorBrand?: any;
+}
+
+export interface DataType {
+  guid: string;
+  id: number;
+  title: string;
+}
+
+export interface StepProps {
+  next: () => void;
+  prev: () => void;
+  keyboardLang?: DataType[];
+  memory?: DataType[];
+  storages?: DataType[];
+  warranty?: DataType[];
+  warrantyType?: DataType[];
+  taxRule?: DataType[];
+  minOrder?: DataType[];
 }
 
 export interface ProductBrand {
@@ -57,7 +75,7 @@ export interface ProductBrand {
     guid: string;
     id: number;
     title: string;
-  }
+  };
 }
 
 export interface ProductCategory {
@@ -65,7 +83,5 @@ export interface ProductCategory {
     guid: string;
     id: number;
     title: string;
-  }
+  };
 }
-
-

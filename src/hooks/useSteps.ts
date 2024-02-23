@@ -33,7 +33,7 @@ const useSteps = (totalSteps: number): StepTypes => {
     currentStep,
     goToStep,
     isFirstStep,
-    isLastStep
+    isLastStep,
   };
 };
 
