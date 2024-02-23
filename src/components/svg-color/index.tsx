@@ -14,7 +14,7 @@ export const SvgColor = forwardRef(({ src, sx, ...other }: SvgColorProps, ref) =
       display: 'inline-block',
       bgcolor: 'currentColor',
       mask: `url(${src}) no-repeat center / contain`,
-      ...sx,
+      ...(sx && typeof sx === 'object' ? sx : {}),
     }}
     {...other}
   />

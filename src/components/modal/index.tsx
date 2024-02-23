@@ -3,7 +3,7 @@ import { closeModal } from '@/store/products';
 import { useDispatch } from 'react-redux';
 import { productApi } from '@/api/products';
 import { useQuery } from '@tanstack/react-query';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Step3 from './Step3';
 import Step2 from './Step2';
 
